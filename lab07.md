@@ -26,18 +26,70 @@ Execute the instruction：       将W和3相加，并把值存在ACC中
 8
 ## *****4.*****
 >#include<stdio.h>
+
 >int main()
+
 >{
->   int sum=w+3;
->   return 0;
+
+>   int w=3,x=7;
+
+>   int y=x+w;
+
 >}
 ## *任务2*
 ## ***（1）***
 ## *****1.*****
-
+将x的值一直减一直到为1
 ## *****2.*****
+>#include<stdio.h>
 
+>int main()
+
+>{
+
+>   int x=3;
+
+>   while(x>1)
+
+>       x--;
+
+>}
 ## ***（2）***
 ## *****1.*****
+>#include<stdio.h>
+
+>int main()
+
+>{
+
+>   int y=0,x=1;;
+
+>   while(x<=10)
+
+>   {    
+
+>       y+=x;
+
+>       x++;
+
+>   }
+
+>}
 ## *****2.*****
+00  LOD #0
+02  STO Y
+04  LOD #10
+06  STO X
+08  JMZ 22
+10  ADD Y
+12  STO Y
+14  LOD X  
+16  SUB #1
+18  STO X
+20  JMP 08
+22  HLT
+
+
 ## *****3.*****
+区别：机器语言不易懂
+联系：具有同样的结构，都是通过指令对数据的操作
