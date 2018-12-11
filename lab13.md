@@ -260,6 +260,6 @@ void newa(char map[][13],int a)
 
 }
 
-## *最终效果：*
+## *最终效果： *
 
 ![](https://github.com/t-a-arnold/swi-homework/blob/gh-pages/images/12.11-1.gif?raw=true)
