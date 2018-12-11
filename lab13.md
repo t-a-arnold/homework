@@ -4,47 +4,47 @@
 
 ## ***1.初始化***
 
-	char map[12][13]={
-		"************",  
-		"*XXXXH     *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"*     $    *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"************"}; 
+>	char map[12][13]={
+>		"************",  
+>		"*XXXXH     *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"*     $    *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"************"}; 
+>
+>	char map_1[12][13]={
+>		"************",  
+>		"*          *",  
+>		"*          *",  
+>		"*  Game    *",  
+>		"*    Over  *",  
+>		"*      !!! *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"*          *",  
+>		"************"}; 
 
-	char map_1[12][13]={
-		"************",  
-		"*          *",  
-		"*          *",  
-		"*  Game    *",  
-		"*    Over  *",  
-		"*      !!! *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"*          *",  
-		"************"}; 
+>	char step;//存放每步 
 
-	char step;//存放每步 
+>	int body[2][150]={{1,1,1,1,1},{5,4,3,2,1}};//存放整条蛇的坐标 
 
-	int body[2][150]={{1,1,1,1,1},{5,4,3,2,1}};//存放整条蛇的坐标 
+>	int longth=5;//存放蛇的长度 
 
-	int longth=5;//存放蛇的长度 
+>	int award[2]={5,6};//奖品坐标 
 
-	int award[2]={5,6};//奖品坐标 
+>	int newhead[2];//存放每次的新头坐标 
 
-	int newhead[2];//存放每次的新头坐标 
+>	char nhchar;//新头坐标上的char值 
 
-	char nhchar;//新头坐标上的char值 
-
-	pr(map);
+>	pr(map);
 
 ## ***2.进入循环***
 
@@ -134,9 +134,9 @@
 
 ## *****void pr()*****
 
-void pr(char map[][13])
+>void pr(char map[][13])
 
-{
+>{
 
 >	//输出表格 
 
@@ -152,67 +152,67 @@ void pr(char map[][13])
 
 >	}
 
-}
+>}
 
 ## *****void move()*****
 
-void move(char map[][13],int newhead[],int body[][150],int longth)
+>void move(char map[][13],int newhead[],int body[][150],int longth)
 
-{
+>{
 
-	//(map中)头变'X'，新头变'H'，尾处变空格		(body中)从旧头，到旧尾前一个，全部后退一格，头坐标变新头
+>	//(map中)头变'X'，新头变'H'，尾处变空格		(body中)从旧头，到旧尾前一个，全部后退一格，头坐标变新头
 
-	map[newhead[0]][newhead[1]]='H';
+>	map[newhead[0]][newhead[1]]='H';
 
-	map[body[0][0]][body[1][0]]='X';
+>	map[body[0][0]][body[1][0]]='X';
 
-	map[body[0][longth-1]][body[1][longth-1]]=' ';
+>	map[body[0][longth-1]][body[1][longth-1]]=' ';
 
-	for(int i=longth-2;i>=0;i--)
+>	for(int i=longth-2;i>=0;i--)
 
-	{
+>	{
 
-		body[0][i+1]=body[0][i];
+>		body[0][i+1]=body[0][i];
 
-		body[1][i+1]=body[1][i];
+>		body[1][i+1]=body[1][i];
 
-	}
+>	}
 
-	body[0][0]=newhead[0];
+>	body[0][0]=newhead[0];
 
-	body[1][0]=newhead[1];
+>	body[1][0]=newhead[1];
 
-}
+>}
 
 ## *****void ate()*****
 
-void ate(char map[][13],int newhead[],int body[][150],int *longth)
+>void ate(char map[][13],int newhead[],int body[][150],int *longth)
 
-{
+>{
 
-	//(map中)头变'X'，食物变'H'，	（数组body）longth++，数据全后移一位，新头坐标变表头 
+>	//(map中)头变'X'，食物变'H'，	（数组body）longth++，数据全后移一位，新头坐标变表头 
 
-	map[body[0][0]][body[1][0]]='X';
+>	map[body[0][0]][body[1][0]]='X';
 
-	map[newhead[0]][newhead[1]]='H';
+>	map[newhead[0]][newhead[1]]='H';
 
-	for(int i=*longth-1;i>=0;i--)
+>	for(int i=*longth-1;i>=0;i--)
 
-	{
+>	{
 
-		body[0][i+1]=body[0][i];
+>		body[0][i+1]=body[0][i];
 
-		body[1][i+1]=body[1][i];
+>		body[1][i+1]=body[1][i];
 
-	}
+>	}
 
-	(*longth)++;
+>	(*longth)++;
 
-	body[0][0]=newhead[0];
+>	body[0][0]=newhead[0];
 
-	body[1][0]=newhead[1];
+>	body[1][0]=newhead[1];
 
-}
+>}
 
 ## *****void newa()*****
 
@@ -262,7 +262,7 @@ void ate(char map[][13],int newhead[],int body[][150],int *longth)
 
 >	}
 
-}
+>}
 
 ## *最终效果： *
 
