@@ -226,7 +226,7 @@ void newa(char map[][13],int a)
 
 	int t=rand()%a+1;
 
-	for(int i=1;i<=10;i++)
+	for(int i=1;i<=10;i++) 
 
 	{
 
