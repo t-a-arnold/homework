@@ -48,85 +48,87 @@
 
 ## ***2.进入循环***
 
-	while(1)
+>	while(1)
 
-	{
+>	{
 
-		//输入移动方式，并计算出新头的坐标放在newhead中 
+>		//输入移动方式，并计算出新头的坐标放在newhead中 
 
-		step=getchar();
+>		step=getchar();
 
-		switch (step)
+>		switch (step)
 
-		{
+>		{
 
-			case 'w':
+>			case 'w':
 
-				newhead[0]=body[0][0]-1;
+>				newhead[0]=body[0][0]-1;
 
-				newhead[1]=body[1][0];
+>				newhead[1]=body[1][0];
 
-				break;
+>				break;
 
 
-			case 's':
+>			case 's':
 
-				newhead[0]=body[0][0]+1;
+>				newhead[0]=body[0][0]+1;
 
-				newhead[1]=body[1][0];
+>				newhead[1]=body[1][0];
 
-				break;
+>				break;
 
-			case 'a':
+>			case 'a':
 
-				newhead[0]=body[0][0];
+>				newhead[0]=body[0][0];
 
-				newhead[1]=body[1][0]-1;
+>				newhead[1]=body[1][0]-1;
 
-				break;
+>				break;
 
-			case 'd':
+>			case 'd':
 
-				newhead[0]=body[0][0];
+>				newhead[0]=body[0][0];
 
-				newhead[1]=body[1][0]+1;
+>				newhead[1]=body[1][0]+1;
 
-				break;
+>				break;
 
-		}
+>		}
 
-		nhchar=map[newhead[0]][newhead[1]];
+>		nhchar=map[newhead[0]][newhead[1]];
 
-		//分情况进入不同函数中 
+>		//分情况进入不同函数中 
 
-		if((nhchar=='X')||(nhchar=='*'))//撞墙，吃自己，或者90度折返 
+>		if((nhchar=='X')||(nhchar=='*'))//撞墙，吃自己，或者90度折返 
 		
-        {
+>       {
 		
-        	pr(map_1);
+ >       	pr(map_1);
 		
-        	break;
+>        	break;
 		
-        }
+>        }
 		
-        if(nhchar==' ')//没有特殊情况 
+>       if(nhchar==' ')//没有特殊情况 
 		
-        	move(map,newhead,body,longth);
+>      	move(map,newhead,body,longth);
 		
-        if(nhchar=='$')//吃到奖品 
+>     if(nhchar=='$')//吃到奖品 
 		
-        {
+>        {
 		
-        	ate(map,newhead,body,&longth);
+>        	ate(map,newhead,body,&longth);
 		
-        	newa(map,100-longth);
+>        	newa(map,100-longth);
 		
-        }
+>        }
 		
-        pr(map);
-	} 
+>        pr(map);
 
-} 
+>	} 
+
+>} 
+
 
 ## ***3.自顶而下，编写pr,ate,newa,move程序***
 
@@ -136,19 +138,19 @@ void pr(char map[][13])
 
 {
 
-	//输出表格 
+>	//输出表格 
 
-	for(int i=0;i<=11;i++)
+>	for(int i=0;i<=11;i++)
 
-	{
+>	{
 
-		for(int j=0;j<=12;j++)
+>		for(int j=0;j<=12;j++)
 
-			printf("%c",map[i][j]);
+>			printf("%c",map[i][j]);
 
-		printf("\n");
+>		printf("\n");
 
-	}
+>	}
 
 }
 
@@ -214,49 +216,51 @@ void ate(char map[][13],int newhead[],int body[][150],int *longth)
 
 ## *****void newa()*****
 
-void newa(char map[][13],int a)
+>void newa(char map[][13],int a)
 
-{
+>{
 
-	//随机生成1~（100-longth）内的数k，从左到右，从上到下，找第k个空格变成$ 
+>	//随机生成1~（100-longth）内的数k，从左到右，从上到下，找第k个空格变成$ 
 
-	int num=0;
+>	int num=0;
 
-	int s=1;
+>	int s=1;
 
-	int t=rand()%a+1;
+>	int t=rand()%a+1;
 
-	for(int i=1;i<=10;i++) 
+>	for(int i=1;i<=10;i++) 
 
-	{
+>	{
 
-		for(int j=1;j<=10;j++)
+>		for(int j=1;j<=10;j++)
 
-		{
+>		{
 
-			if(s==0)
+>			if(s==0)
 
-				continue;
+>				continue;
 
-			if(map[i][j]==' ')
+>			if(map[i][j]==' ')
 
-			{
+>			{
 
-				num++;
+>				num++;
 
-				if(num==t)
+>				if(num==t)
 
-				{
+>				{
 
-					map[i][j]='$';
-					s=0;
+>					map[i][j]='$';
 
-				}
+>					s=0;
 
-			}
+>				}
 
-		}
-	}
+>			}
+
+>		}
+
+>	}
 
 }
 
